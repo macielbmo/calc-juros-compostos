@@ -1,7 +1,7 @@
 body {
   width: 740px;
   margin: 40px auto 0;
-  background-color: #f8f3fe;
+  background-color: #fff;
 }
 
 h1,
@@ -16,7 +16,7 @@ h1 {
   text-transform: uppercase;
 }
 
-p {
+.texto-adicioanl {
   font-family: "Geologica";
   font-weight: 300;
   padding: 0 60px;
@@ -26,7 +26,7 @@ form {
   margin: 45px 0;
 }
 
-h2 {
+.texto-secundario {
   font-family: "Geologica";
   font-weight: 700;
 }
@@ -42,11 +42,16 @@ h2 {
   margin: 0 auto;
 }
 
+.valores input {
+  padding: 0;
+}
+
 .valores label {
   font-family: "Geologica";
-  background-color: #fff;
+  background-color: #e6efff;
   padding: 10px 15px;
   font-size: 16px;
+  border-radius: 8px 0 0 8px;
 }
 
 .titulo-inputs {
@@ -61,6 +66,8 @@ h2 {
   border: none;
   margin: 0 0 0 -10px;
   height: 40px;
+  background-color: #e6efff;
+  border-radius: 0 8px 8px 0;
 }
 
 .valor-input {
@@ -88,18 +95,31 @@ h2 {
 #taxa-juros,
 #periodo {
   padding: 0 0 0 15px;
-  margin: 0 -15px 0 0;
-  width: 176px;
+  width: 160px;
+  background-color: #e6efff;
+  border-radius: 8px 0 0 8px;
 }
 
 .linha2 select {
   height: 40px;
   border: none;
-  background-color: #fff;
+  margin: 0 0 0 -4px;
+  border-radius: 0 8px 8px 0;
+  background-color: #0071ff;
 
   font-family: "Geologica";
   font-weight: 300;
   font-size: 14px;
+
+  color: #fff;
+
+  cursor: pointer;
+  transition: background-color 500ms;
+}
+
+.linha2 select:hover {
+  background-color: #0757ba;
+  transition: background-color 500ms;
 }
 
 #select-periodo {
@@ -120,7 +140,7 @@ span {
 .linha3 button {
   margin: 5px 5px;
   padding: 14px 40px;
-  border-radius: 5px;
+  border-radius: 8px;
   border-color: #fff;
   border-style: none;
 }
@@ -130,6 +150,8 @@ span {
   font-family: "Geologica";
   font-weight: 700;
   font-size: 20px;
+
+  cursor: pointer;
 }
 
 .button-calcular {
@@ -146,13 +168,20 @@ span {
 .button-limpar {
   font-weight: 300;
   columns: #0071ff;
-  background: #fff;
+  background: #e6efff;
   transition-duration: 500ms;
 }
 
 .button-limpar:hover {
-  background-color: #ebe8e8;
+  background-color: #ccdefc;
   transition-duration: 500ms;
+}
+
+.observacao {
+  font-family: "Geologica";
+  font-weight: 300;
+  font-size: 12px;
+  color: #888888;
 }
 
 /* CSS ELEMENTOS DO JS */
@@ -166,7 +195,7 @@ span {
 
 .div-dados {
   display: flex;
-  margin-top: 15px;
+  margin: 15px 0 25px;
 }
 
 .div-dados div {
@@ -176,9 +205,9 @@ span {
   justify-content: center;
   align-items: center;
 
-  background-color: #fff;
+  background-color: #e6efff;
   padding: 20px 36px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .resultado-valor-final,
@@ -207,4 +236,82 @@ span {
   font-family: "Geologica";
   font-size: 12px;
   font-weight: 400;
+}
+
+/* LAYOUT RESPONSIVOS */
+
+/* MAXIMO 412px de Tela */
+
+@media (max-width: 412px) {
+  body {
+    width: 400px;
+    margin: 40px auto 0;
+    background-color: #fff;
+  }
+
+  .texto-adicioanl {
+    padding: 0 30px;
+  }
+
+  .linha1,
+  .linha2,
+  .linha3 {
+    display: block;
+    margin: 0 20px;
+  }
+
+  .titulo-inputs {
+    font-size: 18px;
+  }
+
+  .input {
+    height: 50px;
+    margin: 0;
+  }
+
+  .valores label {
+    padding: 13px 15px 17px;
+  }
+
+  .valores input {
+    width: 250px;
+    margin: 0 -4px;
+  }
+
+  .linha2 select {
+    height: 50px;
+  }
+
+  #taxa-juros {
+    width: 200px;
+  }
+
+  #periodo {
+    width: 210px;
+  }
+
+  .linha2 {
+    margin-bottom: 15px;
+  }
+
+  .observacao {
+    margin: 20px 20px;
+  }
+
+  /* CSS ELEMENTOS DO JS */
+
+  /* SEÇÃO RESULTADOS */
+
+  .div-dados {
+    display: block;
+    margin: 0 20px;
+  }
+
+  .titulo-resultado {
+    margin: 0 0 10px 20px;
+  }
+
+  .div-dados div {
+    margin-bottom: 10px;
+  }
 }

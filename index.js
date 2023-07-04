@@ -88,7 +88,7 @@ function addTable() {
     divResultado.id = "div-resultado"
 
     const spanTitulo = document.createElement("span")
-    spanTitulo.innerText = "Resultado"
+    spanTitulo.innerText = "Resultado:"
     spanTitulo.className = "titulo-resultado"
 
     const divDados = document.createElement("div")

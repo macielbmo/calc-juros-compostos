@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Juros Compostos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js" defer></script>
+  </head>
+  <body>
+    <h1 class="titulo-principal">Calculadora de Juros Compostos</h1>
+    <p class="texto-adicioanl">
+      Este Simulador gratuito e exato de juros compostos vai te mostrar qual o
+      montante que você receberá de juros ao fazer um investimento com aporte
+      mensal por um determinado período e com uma taxa definida.
+    </p>
+
+    <form class="formulario" id="formulario">
+      <h2 class="texto-secundario">Cálculo de Juros Compostos</h2>
+
+      <div class="linha1">
+        <div class="valores">
+          <span class="titulo-inputs">Valor inicial</span>
+
+          <label for="valor-inicial">R$</label>
+          <input
+            type="text"
+            value="0,00"
+            class="input"
+            id="valor-inicial"
+            placeholder="0,00"
+          />
+        </div>
+
+        <br />
+
+        <div class="valores">
+          <span class="titulo-inputs">Valor mensal</span>
+
+          <label for="valor-mensal">R$</label>
+          <input
+            type="text"
+            name="valor-mensal"
+            value="0,00"
+            class="input"
+            id="valor-mensal"
+            step="0.01"
+            placeholder="0,00"
+          />
+        </div>
+      </div>
+
+      <br />
+
+      <div class="linha2">
+        <div class="taxa-juros">
+          <span class="titulo-inputs">Taxa de juros</span>
+
+          <input
+            type="number"
+            value=""
+            class="input"
+            id="taxa-juros"
+            step="0.01"
+            placeholder="0,00"
+          />
+
+          <select name="mes-ano" id="select-juros">
+            <option value="mensal">% mensal</option>
+            <option value="anual">% anual</option>
+          </select>
+        </div>
+
+        <br />
+
+        <div class="periodo">
+          <span class="titulo-inputs">Periodo em</span>
+
+          <input
+            type="number"
+            value=""
+            class="input"
+            id="periodo"
+            step="0.01"
+            placeholder="0"
+          />
+
+          <select name="mes-ano" id="select-periodo">
+            <option value="meses">Meses</option>
+            <option value="anos">Anos</option>
+          </select>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="linha3">
+        <button class="button-limpar" onclick="limparFormulario()">
+          Limpar
+        </button>
+        <button
+          class="button-calcular"
+          onclick="calculadoraJurosCompostos(), totalInvestido(), totalGanhoJuros(), addTable()"
+        >
+          Calcular
+        </button>
+      </div>
+
+      <br />
+
+      <div id="resultado-calculo"></div>
+    </form>
+  </body>
+</html>

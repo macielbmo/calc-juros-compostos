@@ -1,0 +1,210 @@
+body {
+  width: 740px;
+  margin: 40px auto 0;
+  background-color: #f8f3fe;
+}
+
+h1,
+p,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-family: "Geologica";
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: "Geologica";
+  font-weight: 300;
+  padding: 0 60px;
+}
+
+form {
+  margin: 45px 0;
+}
+
+h2 {
+  font-family: "Geologica";
+  font-weight: 700;
+}
+
+.linha1,
+.linha2 {
+  display: flex;
+}
+
+.valores,
+.taxa-juros,
+.periodo {
+  margin: 0 auto;
+}
+
+.valores label {
+  font-family: "Geologica";
+  background-color: #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+.titulo-inputs {
+  font-family: "Geologica";
+  font-weight: 300;
+  font-size: 14px;
+  margin: 0 0 5px;
+}
+
+.input {
+  font-size: 16px;
+  border: none;
+  margin: 0 0 0 -10px;
+  height: 40px;
+}
+
+.valor-input {
+  float: left;
+}
+
+#valor-inicial::-webkit-inner-spin-button,
+#valor-inicial::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#valor-mensal::-webkit-inner-spin-button,
+#valor-mensal::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#taxa-juros::-webkit-inner-spin-button,
+#taxa-juros::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#taxa-juros,
+#periodo {
+  padding: 0 0 0 15px;
+  margin: 0 -15px 0 0;
+  width: 176px;
+}
+
+.linha2 select {
+  height: 40px;
+  border: none;
+  background-color: #fff;
+
+  font-family: "Geologica";
+  font-weight: 300;
+  font-size: 14px;
+}
+
+#select-periodo {
+  width: 76px;
+}
+
+span {
+  display: flex;
+}
+
+.linha3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.linha3 button {
+  margin: 5px 5px;
+  padding: 14px 40px;
+  border-radius: 5px;
+  border-color: #fff;
+  border-style: none;
+}
+
+.button-calcular,
+.button-limpar {
+  font-family: "Geologica";
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.button-calcular {
+  color: #fff;
+  background: #0071ff;
+  transition: background-color 500ms;
+}
+
+.button-calcular:hover {
+  background-color: #0757ba;
+  transition-duration: 500ms;
+}
+
+.button-limpar {
+  font-weight: 300;
+  columns: #0071ff;
+  background: #fff;
+  transition-duration: 500ms;
+}
+
+.button-limpar:hover {
+  background-color: #ebe8e8;
+  transition-duration: 500ms;
+}
+
+/* CSS ELEMENTOS DO JS */
+
+/* SEÇÃO RESULTADOS */
+
+.titulo-resultado {
+  font-family: "Geologica";
+  font-weight: 700;
+}
+
+.div-dados {
+  display: flex;
+  margin-top: 15px;
+}
+
+.div-dados div {
+  margin: 0 auto 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fff;
+  padding: 20px 36px;
+  border-radius: 5px;
+}
+
+.resultado-valor-final,
+.resultado-valor-investido,
+.resultado-valor-juros {
+  font-family: "Geologica";
+  font-size: 25px;
+  font-weight: bold;
+
+  margin: 4px 0 0;
+}
+
+.resultado-valor-final {
+  color: #455a64;
+}
+
+.resultado-valor-investido {
+  color: #6115dd;
+}
+
+.resultado-valor-juros {
+  color: #117729;
+}
+
+.texto-resultado-valor {
+  font-family: "Geologica";
+  font-size: 12px;
+  font-weight: 400;
+}

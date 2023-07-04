@@ -42,7 +42,7 @@ function calculadoraJurosCompostos() {
     const vM = formatarMoedaCaculo(valorMensal)
 
     const taxaJuros = document.getElementById("taxa-juros").value
-    const tJ = parseFloat(taxaJuros)
+    const tJ = formatarMoedaCaculo(taxaJuros)
 
     const periodo = document.getElementById("periodo").value
     const p = parseFloat(periodo)
@@ -52,8 +52,10 @@ function calculadoraJurosCompostos() {
 
     if (selectElementJuros === "mensal") {
         juros = tJ / 100
+        console.log(juros)
     } if (selectElementJuros === "anual") {
         juros = Math.pow(1 + (tJ / 100), 1 / 12) - 1;
+        console.log(juros)
         console.log(juros)
     } else { }
 
@@ -78,7 +80,7 @@ function totalInvestido() {
 }
 
 function totalGanhoJuros() {
-    valorGanhoJuros = parseFloat(valorFinal - valorTotalInvestido)
+    valorGanhoJuros = valorFinal - valorTotalInvestido
 }
 
 function addTable() {
@@ -97,6 +99,7 @@ function addTable() {
     divDados.className = 'div-dados'
 
     const divVT = document.createElement("div")
+    divVT.className = "div-conteudo1"
     const spanVT1 = document.createElement("span")
     spanVT1.innerText = "Valor total final"
     spanVT1.className = 'texto-resultado-valor'
@@ -106,6 +109,7 @@ function addTable() {
 
 
     const divTI = document.createElement("div")
+    divTI.className = "div-conteudo2"
     const spanTI1 = document.createElement("span")
     spanTI1.innerText = "Valor total investido"
     spanTI1.className = 'texto-resultado-valor'
@@ -115,6 +119,7 @@ function addTable() {
 
 
     const divTJ = document.createElement("div")
+    divTJ.className = "div-conteudo3"
     const spanTJ1 = document.createElement("span")
     spanTJ1.innerText = "Total ganho em juros"
     spanTJ1.className = 'texto-resultado-valor'
@@ -131,6 +136,8 @@ function addTable() {
     divResultado.append(spanTitulo, divDados)
 
     resultado.append(divResultado)
+
+    maxWidthResultado()
 }
 
 function limpar() {
@@ -148,3 +155,20 @@ function limparFormulario() {
 
     limpar()
 }
+
+function maxWidthResultado() {
+    const divDados = document.querySelector(".div-dados")
+    const divConteudo1 = document.querySelector(".div-conteudo1")
+    const divConteudo2 = document.querySelector(".div-conteudo2")
+    const divConteudo3 = document.querySelector(".div-conteudo3")
+
+    const contentWidth = divDados.offsetWidth
+    const scrollWidth = divDados.scrollWidth
+
+    if (scrollWidth > contentWidth) {
+        divDados.style.display = "block"
+        divConteudo1.style.marginBottom = "10px"
+        divConteudo2.style.marginBottom = "10px"
+        divConteudo3.style.marginBottom = "10px"
+    }
+};

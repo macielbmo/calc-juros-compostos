@@ -198,6 +198,7 @@ span {
 .div-dados {
   display: flex;
   margin: 15px 0 25px;
+  max-width: 740px;
 }
 
 .div-dados div {

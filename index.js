@@ -12,9 +12,11 @@ let tempo = 0
 
 const input = document.getElementById("valor-inicial");
 const inputMnesal = document.getElementById("valor-mensal")
+const inputJuros = document.getElementById("taxa-juros")
 
 input.addEventListener("keyup", formatarMoeda);
 inputMnesal.addEventListener("keyup", formatarMoeda)
+inputJuros.addEventListener("keyup", formatarMoeda)
 
 function formatarMoeda(e) {
     let v = e.target.value.replace(/\D/g, "");

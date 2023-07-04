@@ -1,4 +1,5 @@
 body {
+  font-family: "Geologica";
   width: 740px;
   margin: 40px auto 0;
   background-color: #fff;
@@ -11,13 +12,11 @@ h2 {
 }
 
 h1 {
-  font-family: "Geologica";
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .texto-adicioanl {
-  font-family: "Geologica";
   font-weight: 300;
   padding: 0 60px;
 }
@@ -27,12 +26,15 @@ form {
 }
 
 .texto-secundario {
-  font-family: "Geologica";
   font-weight: 700;
 }
 
 .linha1,
 .linha2 {
+  display: flex;
+}
+
+.box-input {
   display: flex;
 }
 
@@ -47,7 +49,6 @@ form {
 }
 
 .valores label {
-  font-family: "Geologica";
   background-color: #e6efff;
   padding: 10px 15px;
   font-size: 16px;
@@ -55,7 +56,6 @@ form {
 }
 
 .titulo-inputs {
-  font-family: "Geologica";
   font-weight: 300;
   font-size: 14px;
   margin: 0 0 5px;
@@ -98,16 +98,15 @@ form {
   width: 160px;
   background-color: #e6efff;
   border-radius: 8px 0 0 8px;
+  margin: 0;
 }
 
 .linha2 select {
   height: 40px;
   border: none;
-  margin: 0 0 0 -4px;
   border-radius: 0 8px 8px 0;
   background-color: #0071ff;
 
-  font-family: "Geologica";
   font-weight: 300;
   font-size: 14px;
 
@@ -124,6 +123,12 @@ form {
 
 #select-periodo {
   width: 76px;
+}
+
+#periodo::-webkit-inner-spin-button,
+#periodo::-webkit-outer-spin-button {
+  height: 20px;
+  width: 20px;
 }
 
 span {
@@ -147,7 +152,6 @@ span {
 
 .button-calcular,
 .button-limpar {
-  font-family: "Geologica";
   font-weight: 700;
   font-size: 20px;
 
@@ -178,7 +182,6 @@ span {
 }
 
 .observacao {
-  font-family: "Geologica";
   font-weight: 300;
   font-size: 12px;
   color: #888888;
@@ -189,7 +192,6 @@ span {
 /* SEÇÃO RESULTADOS */
 
 .titulo-resultado {
-  font-family: "Geologica";
   font-weight: 700;
 }
 
@@ -213,7 +215,6 @@ span {
 .resultado-valor-final,
 .resultado-valor-investido,
 .resultado-valor-juros {
-  font-family: "Geologica";
   font-size: 25px;
   font-weight: bold;
 
@@ -233,9 +234,54 @@ span {
 }
 
 .texto-resultado-valor {
-  font-family: "Geologica";
   font-size: 12px;
   font-weight: 400;
+}
+
+/* SECÇÃO - COMO UTLIZAR A CALCULADORA */
+
+.section-lista {
+  margin: 0 0 0 10px;
+}
+
+.title-lista {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.lista {
+  list-style-type: none;
+  counter-reset: list-item;
+  margin-left: 25px;
+  padding-left: 0;
+}
+
+.lista li {
+  margin-bottom: 15px;
+  padding: 0px;
+}
+
+.item::before {
+  position: absolute;
+  margin: 0 -30px;
+  content: counter(list-item);
+  color: white;
+  width: 25px;
+  height: 25px;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid color(#0071ff);
+  box-sizing: border-box;
+  font-size: 13px;
+  background-color: #0071ff;
+  text-align: center;
+  padding: 0;
+  letter-spacing: -1px;
+  padding-right: 1px;
 }
 
 /* LAYOUT RESPONSIVOS */
@@ -244,7 +290,7 @@ span {
 
 @media (max-width: 576px) {
   body {
-    width: 400px;
+    width: 95%;
     margin: 40px auto 0;
     background-color: #fff;
   }
@@ -297,6 +343,8 @@ span {
   .observacao {
     margin: 20px 20px;
   }
+
+  /* SECÇÃO - COMO UTLIZAR A CALCULADORA */
 
   /* CSS ELEMENTOS DO JS */
 

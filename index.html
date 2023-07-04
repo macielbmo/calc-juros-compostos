@@ -31,14 +31,18 @@
         <div class="valores">
           <span class="titulo-inputs">Valor inicial</span>
 
-          <label for="valor-inicial">R$</label>
-          <input
-            type="text"
-            value="0,00"
-            class="input"
-            id="valor-inicial"
-            placeholder="0,00"
-          />
+          <div class="box-input">
+            <label for="valor-inicial">R$</label>
+            <input
+              type="text"
+              value="0,00"
+              class="input"
+              id="valor-inicial"
+              placeholder="0,00"
+              pattern="[0-9]*"
+              inputmode="numeric"
+            />
+          </div>
         </div>
 
         <br />
@@ -46,16 +50,20 @@
         <div class="valores">
           <span class="titulo-inputs">Valor mensal</span>
 
-          <label for="valor-mensal">R$</label>
-          <input
-            type="text"
-            name="valor-mensal"
-            value="0,00"
-            class="input"
-            id="valor-mensal"
-            step="0.01"
-            placeholder="0,00"
-          />
+          <div class="box-input">
+            <label for="valor-mensal">R$</label>
+            <input
+              type="text"
+              name="valor-mensal"
+              value="0,00"
+              class="input"
+              id="valor-mensal"
+              step="0.01"
+              placeholder="0,00"
+              pattern="[0-9]*"
+              inputmode="numeric"
+            />
+          </div>
         </div>
       </div>
 
@@ -65,19 +73,23 @@
         <div class="taxa-juros">
           <span class="titulo-inputs">Taxa de juros</span>
 
-          <input
-            type="number"
-            value=""
-            class="input"
-            id="taxa-juros"
-            step="0.01"
-            placeholder="0,00"
-          />
+          <div class="box-input">
+            <input
+              type="text"
+              value="0,00"
+              class="input"
+              id="taxa-juros"
+              step="0.01"
+              placeholder="0,00"
+              pattern="[0-9]*"
+              inputmode="numeric"
+            />
 
-          <select name="mes-ano" id="select-juros">
-            <option value="mensal">% mensal</option>
-            <option value="anual">% anual</option>
-          </select>
+            <select name="mes-ano" id="select-juros">
+              <option value="mensal">% mensal</option>
+              <option value="anual">% anual</option>
+            </select>
+          </div>
         </div>
 
         <br />
@@ -85,19 +97,21 @@
         <div class="periodo">
           <span class="titulo-inputs">Periodo em</span>
 
-          <input
-            type="number"
-            value=""
-            class="input"
-            id="periodo"
-            step="0"
-            placeholder="0"
-          />
+          <div class="box-input">
+            <input
+              type="number"
+              value="0"
+              class="input"
+              id="periodo"
+              step="0"
+              placeholder="0"
+            />
 
-          <select name="mes-ano" id="select-periodo">
-            <option value="meses">Meses</option>
-            <option value="anos">Anos</option>
-          </select>
+            <select name="mes-ano" id="select-periodo">
+              <option value="meses">Meses</option>
+              <option value="anos">Anos</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -126,5 +140,24 @@
         a consulta de um profissional da área.
       </p>
     </form>
+
+    <section class="section-lista">
+      <div>
+        <h2 class="title-lista">
+          Como utilizar a calculadora de juros compostos
+        </h2>
+      </div>
+      <div class="container-lista">
+        <ul class="lista">
+          <li class="item">Preencha o campo valor inicial;</li>
+          <li class="item">
+            Preencha o campo valor mensal (Será somado ao final de cada ciclo);
+          </li>
+          <li class="item">Preencha a taxa de juros anual ou mensal;</li>
+          <li class="item">Preencha o campo período por meses ou anos;</li>
+          <li class="item">Clique em calcular e veja o resultado.</li>
+        </ul>
+      </div>
+    </section>
   </body>
 </html>

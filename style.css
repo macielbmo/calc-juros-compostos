@@ -242,7 +242,7 @@ span {
 
 /* MAXIMO 412px de Tela */
 
-@media (max-width: 412px) {
+@media (max-width: 576px) {
   body {
     width: 400px;
     margin: 40px auto 0;

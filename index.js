@@ -1,50 +1,25 @@
 const form = document.getElementById("formulario")
-
 form.addEventListener("submit", function (ev) {
     ev.preventDefault()
 })
 
-let valorFinal = 0
+let valorTotalFinal = 0
 let valorTotalInvestido = 0
 let valorGanhoJuros = 0
 let juros = 0
 let tempo = 0
 
-const input = document.getElementById("valor-inicial");
-const inputMnesal = document.getElementById("valor-mensal")
-const inputJuros = document.getElementById("taxa-juros")
+// Faz o calculo geral do juros composto e gera o resultado do Total Final, Total Investido e Valor Ganho em Juros
+document.getElementById('button-calcular').addEventListener('click', function caclJurosCompostos() {
 
-input.addEventListener("keyup", formatarMoeda);
-inputMnesal.addEventListener("keyup", formatarMoeda)
-inputJuros.addEventListener("keyup", formatarMoeda)
-
-function formatarMoeda(e) {
-    let v = e.target.value.replace(/\D/g, "");
-    v = (parseFloat(v) / 100).toFixed(2) + "";
-    v = v.replace(".", ",");
-    v = v.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
-    v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
-    e.target.value = v
-}
-
-function formatarMoedaCaculo(valor) {
-    const valorSemPonto = valor.replace(/\./g, "");
-    const valorConvertido = valorSemPonto.replace(",", ".");
-    const numero = parseFloat(valorConvertido);
-    return numero;
-}
-
-function calculadoraJurosCompostos() {
     const valorInicial = document.getElementById("valor-inicial").value
-    const vI = formatarMoedaCaculo(valorInicial)
-
     const valorMensal = document.getElementById("valor-mensal").value
-    const vM = formatarMoedaCaculo(valorMensal)
-
     const taxaJuros = document.getElementById("taxa-juros").value
-    const tJ = formatarMoedaCaculo(taxaJuros)
-
     const periodo = document.getElementById("periodo").value
+
+    const vI = formatarMoedaCaculo(valorInicial)
+    const vM = formatarMoedaCaculo(valorMensal)
+    const tJ = formatarMoedaCaculo(taxaJuros)
     const p = parseFloat(periodo)
 
     const selectElementJuros = document.getElementById("select-juros").value
@@ -55,8 +30,6 @@ function calculadoraJurosCompostos() {
         console.log(juros)
     } if (selectElementJuros === "anual") {
         juros = Math.pow(1 + (tJ / 100), 1 / 12) - 1;
-        console.log(juros)
-        console.log(juros)
     } else { }
 
     if (selectElementPerido === "meses") {
@@ -67,26 +40,20 @@ function calculadoraJurosCompostos() {
 
     const valorFuturoAporteInicial = (vI * (1 + juros) ** tempo);
     const valorFuturoAporteMensal = (vM * ((1 + juros) ** tempo - 1) / juros);
-    valorFinal = (valorFuturoAporteInicial + valorFuturoAporteMensal)
-}
 
-function totalInvestido() {
-    const valorInicial = document.getElementById("valor-inicial").value
-    const vI = formatarMoedaCaculo(valorInicial)
-    const valorMensal = document.getElementById("valor-mensal").value
-    const vM = formatarMoedaCaculo(valorMensal)
+    valorTotalFinal = (valorFuturoAporteInicial + valorFuturoAporteMensal)
+    valorTotalInvestido = vI + (vM * tempo)
+    valorGanhoJuros = valorTotalFinal - valorTotalInvestido
 
-    valorTotalInvestido = vI + vM * tempo
-}
+    addTable()
+})
 
-function totalGanhoJuros() {
-    valorGanhoJuros = valorFinal - valorTotalInvestido
-}
-
+// Adicionação os elementos da seção resultado no DOM
 function addTable() {
-    limpar()
+    limparResultado()
 
-    const resultado = document.getElementById("resultado-calculo")
+    const resultado = document.getElementById("section-resultado")
+    resultado.scrollIntoView({ behavior: 'smooth' })
 
     const divResultado = document.createElement("div")
     divResultado.id = "div-resultado"
@@ -104,9 +71,8 @@ function addTable() {
     spanVT1.innerText = "Valor total final"
     spanVT1.className = 'texto-resultado-valor'
     const spanVT2 = document.createElement("span")
-    spanVT2.innerText = valorFinal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+    spanVT2.innerText = valorTotalFinal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     spanVT2.className = 'resultado-valor-final'
-
 
     const divTI = document.createElement("div")
     divTI.className = "div-conteudo2"
@@ -116,7 +82,6 @@ function addTable() {
     const spanTI2 = document.createElement("span")
     spanTI2.innerText = valorTotalInvestido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     spanTI2.className = 'resultado-valor-investido'
-
 
     const divTJ = document.createElement("div")
     divTJ.className = "div-conteudo3"
@@ -140,8 +105,35 @@ function addTable() {
     maxWidthResultado()
 }
 
-function limpar() {
-    const secaoResultado = document.getElementById('resultado-calculo')
+// Formata os campos do Input enquanto o cliente digita para o padrão BRL
+function formatarMoeda(e) {
+    let v = e.target.value.replace(/\D/g, "");
+    v = (parseFloat(v) / 100).toFixed(2) + "";
+    v = v.replace(".", ",");
+    v = v.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+    v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
+    e.target.value = v
+}
+
+const input = document.getElementById("valor-inicial");
+const inputMnesal = document.getElementById("valor-mensal")
+const inputJuros = document.getElementById("taxa-juros")
+
+input.addEventListener("keyup", formatarMoeda);
+inputMnesal.addEventListener("keyup", formatarMoeda)
+inputJuros.addEventListener("keyup", formatarMoeda)
+
+// Formata os valores iseridos nos Input para um padrão que possa ser calculado no JS
+function formatarMoedaCaculo(valor) {
+    const valorSemPonto = valor.replace(/\./g, "");
+    const valorConvertido = valorSemPonto.replace(",", ".");
+    const numero = parseFloat(valorConvertido);
+    return numero;
+}
+
+// Limpa apenas a seção de resultado
+function limparResultado() {
+    const secaoResultado = document.getElementById('section-resultado')
     const div = document.getElementById('div-resultado')
 
     if (secaoResultado && div) {
@@ -149,13 +141,21 @@ function limpar() {
     } else { }
 }
 
-function limparFormulario() {
+// Botão Limpar - limpa o fomulario + seção de resultado
+document.getElementById('button-limpar').addEventListener('click', function limparFormulario() {
     const form = document.getElementById('formulario')
+    console.log(form.value)
     form.reset()
 
-    limpar()
+    form.scrollIntoView({ behavior: 'smooth' })
+
+    limparResultado()
+})
+
+function limparFormulario() {
 }
 
+// Função para controlar o dimencionamento da seção resultado, em casos de resultados numericos grande, pode acabar quebrando o desing
 function maxWidthResultado() {
     const divDados = document.querySelector(".div-dados")
     const divConteudo1 = document.querySelector(".div-conteudo1")

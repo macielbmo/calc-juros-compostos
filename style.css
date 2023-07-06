@@ -1,8 +1,14 @@
 body {
   font-family: "Geologica";
-  width: 740px;
-  margin: 40px auto 0;
   background-color: #fff;
+  margin: 0;
+}
+
+header,
+main,
+.section-lista {
+  width: 740px;
+  margin: 30px auto 0;
 }
 
 h1,
@@ -12,8 +18,10 @@ h2 {
 }
 
 h1 {
+  font-size: 32px;
   font-weight: 700;
   text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .texto-adicioanl {
@@ -25,13 +33,16 @@ form {
   margin: 45px 0;
 }
 
-.texto-secundario {
+.titulo-secundario {
+  font-size: 24px;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .linha1,
 .linha2 {
   display: flex;
+  margin: 0 0 25px;
 }
 
 .box-input {
@@ -242,12 +253,7 @@ span {
 /* SECÇÃO - COMO UTLIZAR A CALCULADORA */
 
 .section-lista {
-  margin: 0 0 0 10px;
-}
-
-.title-lista {
-  font-weight: 700;
-  font-size: 24px;
+  padding: 0 30px;
 }
 
 .lista {
@@ -285,19 +291,73 @@ span {
   padding-right: 1px;
 }
 
+/* FOTTER - RODAPÉ */
+
+footer {
+  width: 100%;
+  background-color: #e5efff;
+  padding: 20px 0 40px;
+  margin-top: 50px;
+  color: #373737;
+}
+
+.main-footer,
+.descricao-footer,
+.descricao-footer a {
+  margin-bottom: 20px;
+}
+
+.main-footer {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.item-footer a {
+  margin: 0 20px 0 0;
+  color: #373737;
+}
+
+.made-by a,
+svg {
+  display: flex;
+  justify-content: center;
+  color: #373737;
+  font-weight: 300;
+}
+
+.made-by svg {
+  margin: 0 5px 0 0;
+}
+
+.item-footer a:hover,
+.made-by a:hover {
+  color: #0071ff;
+}
+
 /* LAYOUT RESPONSIVOS */
 
 /* MAXIMO 412px de Tela */
 
 @media (max-width: 576px) {
   body {
-    width: 95%;
-    margin: 40px auto 0;
+    width: 100%;
     background-color: #fff;
+    margin: 0;
+  }
+
+  header,
+  main {
+    width: 95%;
+  }
+
+  .section-lista {
+    width: 80%;
+    padding: 0 0 0 30px;
   }
 
   .texto-adicioanl {
-    padding: 0 30px;
+    padding: 0 20px;
   }
 
   .linha1,
@@ -305,6 +365,12 @@ span {
   .linha3 {
     display: block;
     margin: 0 20px;
+  }
+
+  .valores,
+  .taxa-juros,
+  .periodo {
+    margin: 0 0 25px;
   }
 
   .titulo-inputs {

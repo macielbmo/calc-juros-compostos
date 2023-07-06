@@ -13,125 +13,114 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./index.js" defer></script>
   </head>
+
   <body>
-    <h1 class="titulo-principal">Calculadora de Juros Compostos</h1>
-    <p class="texto-adicioanl">
-      Este Simulador gratuito e exato de juros compostos vai te mostrar qual o
-      montante que você receberá de juros ao fazer um investimento com aporte
-      mensal por um determinado período e com uma taxa definida.
-    </p>
+    <header>
+      <h1 class="titulo-principal">Calculadora de Juros Compostos</h1>
+      <p class="texto-adicioanl">
+        Este Simulador gratuito e exato de juros compostos vai te mostrar qual o
+        montante que você receberá de juros ao fazer um investimento com aporte
+        mensal por um determinado período e com uma taxa definida.
+      </p>
+    </header>
 
-    <form class="formulario" id="formulario">
-      <h2 class="texto-secundario">Cálculo de Juros Compostos</h2>
+    <main>
+      <form class="formulario" id="formulario" novalidate>
+        <h2 class="titulo-secundario">Cálculo de Juros Compostos</h2>
 
-      <div class="linha1">
-        <div class="valores">
-          <span class="titulo-inputs">Valor inicial</span>
+        <div class="linha1">
+          <div class="valores">
+            <span class="titulo-inputs">Valor inicial</span>
 
-          <div class="box-input">
-            <label for="valor-inicial">R$</label>
-            <input
-              type="text"
-              value="0,00"
-              class="input"
-              id="valor-inicial"
-              placeholder="0,00"
-              pattern="[0-9]*"
-              inputmode="numeric"
-            />
+            <div class="box-input">
+              <label for="valor-inicial">R$</label>
+              <input
+                type="text"
+                value="0,00"
+                class="input"
+                id="valor-inicial"
+                placeholder="0,00"
+                pattern="[0-9]*"
+              />
+            </div>
+          </div>
+
+          <div class="valores">
+            <span class="titulo-inputs">Valor mensal</span>
+
+            <div class="box-input">
+              <label for="valor-mensal">R$</label>
+              <input
+                type="text"
+                name="valor-mensal"
+                value="0,00"
+                class="input"
+                id="valor-mensal"
+                step="0.01"
+                placeholder="0,00"
+                pattern="[0-9]*"
+                inputmode="numeric"
+              />
+            </div>
           </div>
         </div>
 
-        <br />
+        <div class="linha2">
+          <div class="taxa-juros">
+            <span class="titulo-inputs">Taxa de juros</span>
 
-        <div class="valores">
-          <span class="titulo-inputs">Valor mensal</span>
+            <div class="box-input">
+              <input
+                type="text"
+                value="0,00"
+                class="input"
+                id="taxa-juros"
+                step="0.01"
+                placeholder="0,00"
+                pattern="[0-9]*"
+                inputmode="numeric"
+              />
 
-          <div class="box-input">
-            <label for="valor-mensal">R$</label>
-            <input
-              type="text"
-              name="valor-mensal"
-              value="0,00"
-              class="input"
-              id="valor-mensal"
-              step="0.01"
-              placeholder="0,00"
-              pattern="[0-9]*"
-              inputmode="numeric"
-            />
+              <select name="mes-ano" id="select-juros">
+                <option value="mensal">% mensal</option>
+                <option value="anual">% anual</option>
+              </select>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <br />
+          <div class="periodo">
+            <span class="titulo-inputs">Periodo em</span>
 
-      <div class="linha2">
-        <div class="taxa-juros">
-          <span class="titulo-inputs">Taxa de juros</span>
+            <div class="box-input">
+              <input
+                type="number"
+                value="0"
+                class="input"
+                id="periodo"
+                step="0"
+                placeholder="0"
+              />
 
-          <div class="box-input">
-            <input
-              type="text"
-              value="0,00"
-              class="input"
-              id="taxa-juros"
-              step="0.01"
-              placeholder="0,00"
-              pattern="[0-9]*"
-              inputmode="numeric"
-            />
-
-            <select name="mes-ano" id="select-juros">
-              <option value="mensal">% mensal</option>
-              <option value="anual">% anual</option>
-            </select>
+              <select name="mes-ano" id="select-periodo">
+                <option value="meses">Meses</option>
+                <option value="anos">Anos</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <br />
+        <div class="linha3">
+          <button id="button-limpar" class="button-limpar">Limpar</button>
 
-        <div class="periodo">
-          <span class="titulo-inputs">Periodo em</span>
-
-          <div class="box-input">
-            <input
-              type="number"
-              value="0"
-              class="input"
-              id="periodo"
-              step="0"
-              placeholder="0"
-            />
-
-            <select name="mes-ano" id="select-periodo">
-              <option value="meses">Meses</option>
-              <option value="anos">Anos</option>
-            </select>
-          </div>
+          <button id="button-calcular" class="button-calcular">Calcular</button>
         </div>
-      </div>
+      </form>
 
-      <br />
-
-      <div class="linha3">
-        <button class="button-limpar" onclick="limparFormulario()">
-          Limpar
-        </button>
-        <button
-          class="button-calcular"
-          onclick="calculadoraJurosCompostos(), totalInvestido(), totalGanhoJuros(), addTable()"
-        >
-          Calcular
-        </button>
-      </div>
-
-      <br />
-
-      <div id="resultado-calculo"></div>
+      <section id="section-resultado"></section>
 
       <p class="observacao">
         *Os resultados dessa calculadora são simulações. Podendo assim, sofrer
@@ -139,27 +128,68 @@
         página tem caráter informativo, sem valor legal. Portanto, não dispensa
         a consulta de um profissional da área.
       </p>
-    </form>
 
-    <section class="section-lista">
-      <div>
-        <h2 class="title-lista">
-          Como utilizar a calculadora de juros compostos
-        </h2>
+      <section class="section-lista">
+        <div>
+          <h2 class="titulo-secundario">
+            Como utilizar a calculadora de juros compostos
+          </h2>
+        </div>
+        <div class="container-lista">
+          <ul class="lista">
+            <li class="item">Preencha o campo valor inicial;</li>
+            <li class="item">
+              Preencha o campo valor mensal (Será somado ao final de cada
+              ciclo);
+            </li>
+            <li class="item">Preencha a taxa de juros anual ou mensal;</li>
+            <li class="item">Preencha o campo período por meses ou anos;</li>
+            <li class="item">Clique em calcular e veja o resultado.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <ul class="main-footer">
+        <li class="item-footer">
+          <a
+            href="https://github.com/macielbmo/calc-juros-compostos"
+            target="_blank"
+            >Código Aberto</a
+          >
+        </li>
+        <li class="item-footer">
+          <a
+            href="https://github.com/macielbmo/calc-juros-compostos/issues"
+            target="_blank"
+            >Informe um Problema</a
+          >
+        </li>
+      </ul>
+
+      <div class="made-by">
+        <p class="descricao-footer">Feito por Maciel B. Martins</p>
+
+        <a href="https://www.linkedin.com/in/macielbarboza/" target="_blank">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            viewBox="0 0 448 512"
+          >
+            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <style>
+              svg {
+                fill: #3e74d0;
+              }
+            </style>
+            <path
+              d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+            />
+          </svg>
+          Linkedin</a
+        >
       </div>
-      <div class="container-lista">
-        <ul class="lista">
-          <li class="item">Preencha o campo valor inicial;</li>
-          <li class="item">
-            Preencha o campo valor mensal (Será somado ao final de cada ciclo);
-          </li>
-          <li class="item">Preencha a taxa de juros anual ou mensal;</li>
-          <li class="item">Preencha o campo período por meses ou anos;</li>
-          <li class="item">Clique em calcular e veja o resultado.</li>
-        </ul>
-      </div>
-      <br />
-      <br />
-    </section>
+    </footer>
   </body>
 </html>

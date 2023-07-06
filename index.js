@@ -152,9 +152,6 @@ document.getElementById('button-limpar').addEventListener('click', function limp
     limparResultado()
 })
 
-function limparFormulario() {
-}
-
 // Função para controlar o dimencionamento da seção resultado, em casos de resultados numericos grande, pode acabar quebrando o desing
 function maxWidthResultado() {
     const divDados = document.querySelector(".div-dados")
